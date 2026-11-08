@@ -160,6 +160,7 @@ function createBaseLayers() {
             },
         }));
     }
+    if (1) {
         world.push(new ol.layer.VectorTile({
         source: new ol.source.VectorTile({
             format: new ol.format.MVT(),
@@ -185,6 +186,7 @@ function createBaseLayers() {
             });
         },
     }));
+    }
     if (1) {
         world.push(new ol.layer.VectorTile({
             type: 'base',
