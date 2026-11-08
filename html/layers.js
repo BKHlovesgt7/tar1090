@@ -161,31 +161,29 @@ function createBaseLayers() {
         }));
     }
     if (1) {
-        world.push(new ol.layer.VectorTile({
-        source: new ol.source.VectorTile({
-            format: new ol.format.MVT(),
-            url: 'https://tiles.openfreemap.org/data/v3/{z}/{x}/{y}.pbf',
-        }),
-        name: 'openfreemap_buildings',
-        title: 'OpenFreeMap Buildings',
-        type: 'overlay',
-        visible: false,
-        zIndex: 5,
-        style: function(feature) {
-            if (feature.get('class') !== 'building')
-                return null;
+const buildingsLayer = new ol.layer.VectorTile({
+    source: new ol.source.VectorTile({
+        format: new ol.format.MVT(),
+        url: 'https://tiles.openfreemap.org/data/v3/{z}/{x}/{y}.pbf'
+    }),
+    style: function(feature) {
+        if (feature.get('class') !== 'building')
+            return null;
 
-            return new ol.style.Style({
-                fill: new ol.style.Fill({
-                    color: 'rgba(180, 180, 180, 0.8)',
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#666666',
-                    width: 1,
-                }),
-            });
-        },
-    }));
+        return new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(180,180,180,0.8)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#666666',
+                width: 1
+            })
+        });
+    },
+    zIndex: 5
+});
+
+world.push(buildingsLayer);
     }
     if (1) {
         world.push(new ol.layer.VectorTile({
